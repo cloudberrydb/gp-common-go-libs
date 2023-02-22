@@ -496,30 +496,11 @@ func (cluster *Cluster) GetDirsForHost(hostname string) []string {
 func GetSegmentConfiguration(connection *dbconn.DBConn, getMirrors ...bool) ([]SegConfig, error) {
 	includeMirrors := len(getMirrors) == 1 && getMirrors[0]
 	query := ""
-	if connection.Version.Before("6") {
-		whereClause := "WHERE s.role = 'p' AND f.fsname = 'pg_system'"
-		if includeMirrors {
-			whereClause = "WHERE f.fsname = 'pg_system'"
-		}
-		query = fmt.Sprintf(`
-SELECT
-	s.dbid,
-	s.content as contentid,
-	s.role,
-	s.port,
-	s.hostname,
-	e.fselocation as datadir
-FROM gp_segment_configuration s
-JOIN pg_filespace_entry e ON s.dbid = e.fsedbid
-JOIN pg_filespace f ON e.fsefsoid = f.oid
-%s
-ORDER BY s.content, s.role DESC;`, whereClause)
-	} else {
-		whereClause := "WHERE role = 'p'"
-		if includeMirrors {
-			whereClause = ""
-		}
-		query = fmt.Sprintf(`
+	whereClause := "WHERE role = 'p'"
+	if includeMirrors {
+		whereClause = ""
+	}
+	query = fmt.Sprintf(`
 SELECT
 	dbid,
 	content as contentid,
@@ -530,7 +511,6 @@ SELECT
 FROM gp_segment_configuration
 %s
 ORDER BY content, role DESC;`, whereClause)
-	}
 
 	results := make([]SegConfig, 0)
 	err := connection.Select(&results, query)
