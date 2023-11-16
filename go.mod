@@ -1,4 +1,4 @@
-module github.com/greenplum-db/gp-common-go-libs
+module github.com/cloudberrydb/gp-common-go-libs
 
 go 1.17
 
