@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/greenplum-db/gp-common-go-libs/conv"
+	. "github.com/cloudberrydb/gp-common-go-libs/conv"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
