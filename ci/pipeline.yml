@@ -3,7 +3,7 @@ resources:
 - name: gp-common-go-libs
   type: git
   source:
-    uri: https://github.com/greenplum-db/gp-common-go-libs
+    uri: https://github.com/cloudberrydb/gp-common-go-libs
     branch: ((branch))
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           tag: ((golang-version))-buster
       inputs:
       - name: gp-common-go-libs
-        path: go/src/github.com/greenplum-db/gp-common-go-libs
+        path: go/src/github.com/cloudberrydb/gp-common-go-libs
       run:
         path: bash
         args:
@@ -31,5 +31,5 @@ jobs:
           set -ex
           export GOPATH=$PWD/go
           export PATH=$GOPATH/bin:$PATH
-          cd $GOPATH/src/github.com/greenplum-db/gp-common-go-libs
+          cd $GOPATH/src/github.com/cloudberrydb/gp-common-go-libs
           make depend unit

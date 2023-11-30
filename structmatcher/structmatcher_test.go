@@ -1,7 +1,7 @@
 package structmatcher_test
 
 import (
-	"github.com/greenplum-db/gp-common-go-libs/structmatcher"
+	"github.com/cloudberrydb/gp-common-go-libs/structmatcher"
 
 	"testing"
 

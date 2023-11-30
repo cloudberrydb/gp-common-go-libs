@@ -12,7 +12,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/greenplum-db/gp-common-go-libs/operating"
+	"github.com/cloudberrydb/gp-common-go-libs/operating"
 	"github.com/pkg/errors"
 )
 

@@ -5,7 +5,7 @@ package testhelper
  */
 
 import (
-	"github.com/greenplum-db/gp-common-go-libs/cluster"
+	"github.com/cloudberrydb/gp-common-go-libs/cluster"
 	"github.com/jmoiron/sqlx"
 )
 
